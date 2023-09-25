@@ -17,8 +17,8 @@ class SellerFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'João Carlos Vendedor',
-            'email' => 'jcvendas@teste.com',
+            'name' => fake()->name,
+            'email' => fake()->freeEmail(),
         ];
     }
 }

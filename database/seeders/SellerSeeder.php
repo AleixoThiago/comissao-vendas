@@ -13,6 +13,6 @@ class SellerSeeder extends Seeder
      */
     public function run()
     {
-        Seller::factory()->create(); // Cria um vendedor usando o Factory
+        Seller::factory(10)->create(); // Cria um vendedor usando o Factory
     }
 }
