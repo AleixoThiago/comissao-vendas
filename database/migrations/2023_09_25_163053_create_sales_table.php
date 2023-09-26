@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->foreignId('seller_id')->constrained();
-            $table->float('value');
-            $table->timestamp('sale_date')->nullable();
-            $table->timestamps();
+            $table->float('amount');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

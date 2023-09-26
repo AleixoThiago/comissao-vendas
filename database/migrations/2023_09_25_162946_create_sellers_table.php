@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->float('commission_percentage')->default(8.50);
             $table->timestamps();
         });
     }
