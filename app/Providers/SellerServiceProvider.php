@@ -4,9 +4,10 @@ namespace App\Providers;
 
 use App\Services\Contracts\SellerServiceInterface;
 use App\Services\SellerService;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class SellerServiceProvider extends ServiceProvider
+class SellerServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register any application services.
@@ -17,10 +18,12 @@ class SellerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * @return string[]
      */
-    public function boot(): void
+    public function provides()
     {
-        //
+        return [
+            SellerServiceInterface::class,
+        ];
     }
 }
