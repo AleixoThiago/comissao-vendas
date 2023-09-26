@@ -165,6 +165,9 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\SellerServiceProvider::class,
+        App\Providers\SaleServiceProvider::class,
+        App\Providers\SellerCommissionMailProvider::class,
+        App\Providers\AdminSalesMailProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
