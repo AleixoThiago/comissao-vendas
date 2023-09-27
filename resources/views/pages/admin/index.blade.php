@@ -7,10 +7,10 @@
             <p class="text-gray-600 text-center mb-6">Administrador, aqui você acompanha as informações de vendas e
                 vendedores.</p>
             <div class="text-center">
-                <a href="/admin/sellers"
+                <a href="{{ route('admin.sellers') }}"
                     class="block bg-blue-700 text-white rounded-lg py-2 px-4 mb-4 hover:bg-blue-800 transition duration-300 ease-in-out">Visualizar
                     Vendedores</a>
-                <a href="/admin/sales"
+                <a href="{{ route('admin.sales') }}"
                     class="block bg-blue-700 text-white rounded-lg py-2 px-4 hover:bg-blue-800 transition duration-300 ease-in-out">Visualizar
                     Vendas</a>
             </div>

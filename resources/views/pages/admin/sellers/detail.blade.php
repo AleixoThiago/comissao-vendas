@@ -4,7 +4,7 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
             <h1 class="text-3xl font-semibold text-center mb-4">Detalhes do Vendedor</h1>
-            <a href="/admin/sellers" class="block text-blue-700 hover:underline mb-4 text-center">Voltar para a Lista de Vendedores</a>
+            <a href="{{ route('admin.sellers') }}" class="block text-blue-700 hover:underline mb-4 text-center">Voltar para a Lista de Vendedores</a>
             <div class="mb-4 flex items-end">
                 <h2 class="text-xl font-semibold">Nome:</h2>
                 <p class="text-gray-700 ml-1">{{ $sellerData['name'] }}</p>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="flex justify-center flex-col align-center">
-                <a href="/admin/sales/create/{{ $sellerData['id'] }}" class="text-green-700 hover:underline text-center mt-4">Cadastrar Venda</a>
+                <a href="{{ route('admin.create.sale', $sellerData['id']) }}" class="text-green-700 hover:underline text-center mt-4">Cadastrar Venda</a>
                 <h2 class="text-xl font-semibold mt-2 text-center">Vendas Realizadas:</h2>
                 <ul class="mt-2">
                     @for ($i = 0; $i < count($sellerData['sales']); $i++)

@@ -11,7 +11,7 @@
             @if ($errors->any())
                 <h1 class="text-red-500">{{ $errors->first() }}</h1>
             @endif
-            <form action="/admin/sales/create/{{ $id }}" method="POST">
+            <form action="{{ route('admin.create.sale', $id) }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label for="amount" class="block text-gray-700 font-semibold mb-2">Valor da Venda:</label>
@@ -25,7 +25,7 @@
                 </div>
             </form>
             <div class="mt-4 text-center">
-                <a href="/admin/sellers/{{ $id }}" class="block text-blue-700 hover:underline">Detalhes do Vendedor</a>
+                <a href="{{ route('admin.seller.detail', $id) }}" class="block text-blue-700 hover:underline">Detalhes do Vendedor</a>
             </div>
         </div>
     </div>

@@ -6,13 +6,13 @@
             <h1 class="text-3xl font-semibold text-center mb-4">Lista de Vendas</h1>
             <div class="flex justify-between">
                 <div class="mt-4 text-center">
-                    <a href="/admin/sellers"
+                    <a href="{{ route('admin.sellers') }}"
                         class="block bg-blue-700 text-white rounded-lg py-2 px-4 mb-4 hover:bg-blue-800 transition duration-300 ease-in-out">
                         Listagem de vendedores
                     </a>
                 </div>
                 <div class="mt-4 text-center">
-                    <a href="/admin/home"
+                    <a href="{{ route('admin.home') }}"
                         class="block bg-blue-700 text-white rounded-lg py-2 px-4 mb-4 hover:bg-blue-800 transition duration-300 ease-in-out">
                         Voltar
                     </a>
@@ -32,7 +32,7 @@
                         <tr class="text-center">
                             <td class="border p-2">{{ $saleData['id'] }}</td>
                             <td class="border p-2">
-                                <a href="/admin/sellers/{{ $saleData['seller']['id'] }}">
+                                <a href="{{ route('admin.seller.detail', $saleData['seller']['id']) }}">
                                     {{ $saleData['seller']['name'] }}
                                 </a>
                             </td>

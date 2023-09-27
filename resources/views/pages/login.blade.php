@@ -4,7 +4,7 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-md w-96">
             <h1 class="text-3xl font-semibold text-center mb-4">Login - Comissão - Vendas</h1>
-            <form action="/login" method="POST">
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
                 @if ($errors->any())
                     <h4 class="text-red-500">{{ $errors->first() }}</h4>
