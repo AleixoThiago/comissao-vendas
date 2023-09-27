@@ -111,4 +111,16 @@ class AdminPanelService
 
         return true;
     }
+
+    public function sendSellerSalesReportMail($id)
+    {
+        $response = Http::acceptJson()->withToken(Session::get('admin_token'))
+            ->get(env('APP_API_URL') . "/mail/sellers/{$id}");
+
+        if ($response->status() != Response::HTTP_OK) {
+            return false;
+        }
+
+        return true;
+    }
 }

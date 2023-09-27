@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/sellers', [SellerController::class, 'index']);
     Route::get('/sellers/{id}', [SellerController::class, 'getSeller']);
     Route::post('/sellers', [SellerController::class, 'store']);
+    Route::get('/mail/sellers/{id}', [SellerController::class, 'sendSalesReportMail']);
 
     /**
      * Rotas de sales

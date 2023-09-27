@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\SendSellerCommissionEmailJob;
 use App\Models\Seller as SellerModel;
 use App\Services\Contracts\SellerServiceInterface;
 
@@ -70,5 +71,15 @@ class SellerService implements SellerServiceInterface
         $seller->totalSales      = $seller->sales->count();
         $seller->totalAmount     = $seller->sales->sum('amount');
         $seller->totalCommission = (float) number_format(($seller->totalAmount * ($seller->commission_percentage / 100)), 2, '.', '');
+    }
+
+    /**
+     * Método responsável por enviar o email com o relatório de vendas do dia de um vendedor
+     *
+     * @param int $sellerId Identificador do seller
+     */
+    public function dispatchSalesReportMail(int $sellerId)
+    {
+        SendSellerCommissionEmailJob::dispatch($sellerId);
     }
 }

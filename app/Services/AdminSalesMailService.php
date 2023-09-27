@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Admin;
 use App\Models\Sale;
 use App\Services\Contracts\AdminSalesMailInterface;
 
@@ -20,6 +21,15 @@ class AdminSalesMailService implements AdminSalesMailInterface
         $salesData['totalAmount'] = $this->calculateTotalAmount($sales);
 
         return $salesData;
+    }
+
+    /**
+     * Método responsável por retornar os emails dos administradores
+     */
+    public function getAdmins()
+    {
+        $admins = Admin::all('email');
+        return $admins;
     }
 
     /**

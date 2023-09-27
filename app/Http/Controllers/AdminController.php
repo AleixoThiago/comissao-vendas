@@ -168,4 +168,12 @@ class AdminController extends Controller
 
         return redirect("/admin/sales/create/{$id}")->with('success', 'Nova venda cadastrada com sucesso!');
     }
+
+    public function sendSellerSalesReportMail($id)
+    {
+        if(!$this->adminPanelService->sendSellerSalesReportMail($id)) {
+            return back()->withErrors(['error' => 'Erro ao enviar e-mail!']);
+        }
+        return back()->with(['success' => 'E-mail enviado ao vendedor com sucesso!']);
+    }
 }

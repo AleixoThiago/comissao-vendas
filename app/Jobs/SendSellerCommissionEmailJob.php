@@ -19,7 +19,7 @@ class SendSellerCommissionEmailJob implements ShouldQueue
      * Create a new job instance.
      */
     public function __construct(
-        private readonly int $sellerId
+        private readonly int $sellerId = 0
     ) {
         //
     }
@@ -29,6 +29,15 @@ class SendSellerCommissionEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
+        if($this->sellerId <= 0) {
+            $sellersData = (new SellerCommissionMailService)->getAllSellersSalesData();
+            foreach ($sellersData as $sellerData) {
+                $mail = new SellerCommissionMail($sellerData);
+                Mail::to($sellerData['email'])->send($mail);
+            }
+            return;
+        }
+
         $sellerData = (new SellerCommissionMailService)->getSellerSalesData($this->sellerId);
         $mail = new SellerCommissionMail($sellerData);
         Mail::to($sellerData['email'])->send($mail);

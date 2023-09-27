@@ -20,8 +20,13 @@ class SendAdminSalesEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $salesData = (new AdminSalesMailService)->getSalesData();
+        $adminSalesMailService = (new AdminSalesMailService);
+        $admins = $adminSalesMailService->getAdmins();
+        $salesData = $adminSalesMailService->getSalesData();
         $mail = new AdminSalesMail($salesData);
-        Mail::to('admin@mail.com')->send($mail);
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send($mail);
+        }
     }
 }

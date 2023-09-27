@@ -62,4 +62,13 @@ class SellerController extends Controller
             return response()->json(['message' => 'Vendedor não encontrado!', 'data' => []], 404);
         }
     }
+
+    /**
+     * Método responsável por dispachar um job de envio de email
+     */
+    public function sendSalesReportMail(int $id)
+    {
+        $this->sellerService->dispatchSalesReportMail($id);
+        return response()->json(null, Response::HTTP_OK);
+    }
 }

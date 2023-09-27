@@ -20,6 +20,23 @@ class SellerCommissionMailService implements SellerCommissionMailInterface
         return $seller->toArray();
     }
 
+    public function getAllSellersSalesData()
+    {
+        $sellers = Seller::with([
+            'sales' => fn ($query) => $query->whereDate('created_at', today()),
+        ])->get();
+
+        foreach ($sellers as $key => $seller) {
+            $seller->totalSales  = $this->calculateTotalSales($seller);
+            $seller->totalAmount = $this->calculateTotalAmount($seller);
+            $seller->commission  = $this->calculateCommission($seller->totalAmount, $seller->commission_percentage);
+
+            $sellers[$key] = $seller->toArray();
+        }
+
+        return $sellers;
+    }
+
     public function calculateTotalSales(Seller $seller)
     {
         return $seller->sales->count();
