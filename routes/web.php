@@ -19,28 +19,29 @@ use Illuminate\Support\Facades\Route;
 // HOME
 Route::get('/', function () {
     return view('pages.home');
-});
+})->name('home');
 
 // -------------------------------- LOGIN --------------------------------
-Route::get('/login', [AdminLoginController::class, 'showLoginForm']);
-Route::post('/login', [AdminLoginController::class, 'login']);
+Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AdminLoginController::class, 'login'])->name('login');
 // -----------------------------------------------------------------------
 
 // -------------------------------- ADMIN --------------------------------
-Route::get('/admin/home', [AdminController::class, 'index']);
+Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
 
 /**
  * Rotas de vendedores
  */
-Route::get('/admin/sellers', [AdminController::class, 'showSellers']);
-Route::get('/admin/sellers/{id}', [AdminController::class, 'showSeller']);
-Route::get('/admin/create/seller', [AdminController::class, 'showCreateSellerForm']);
-Route::post('/admin/create/seller', [AdminController::class, 'createSeller']);
+Route::get('/admin/sellers', [AdminController::class, 'showSellers'])->name('admin.sellers');
+Route::get('/admin/sellers/{id}', [AdminController::class, 'showSeller'])->name('admin.seller.detail');
+Route::get('/admin/create/seller', [AdminController::class, 'showCreateSellerForm'])->name('admin.create.seller');
+Route::post('/admin/create/seller', [AdminController::class, 'createSeller'])->name('admin.create.seller');
+Route::get('/admin/mail/sellers/{id}', [AdminController::class, 'sendSellerSalesReportMail'])->name('admin.mail.seller');
 
 /**
  * Rotas de vendas
  */
-Route::get('/admin/sales', [AdminController::class, 'showSales']);
-Route::get('/admin/sales/create/{id}', [AdminController::class, 'showCreateSaleForm']);
-Route::post('/admin/sales/create/{id}', [AdminController::class, 'createSale']);
+Route::get('/admin/sales', [AdminController::class, 'showSales'])->name('admin.sales');
+Route::get('/admin/sales/create/{id}', [AdminController::class, 'showCreateSaleForm'])->name('admin.create.sale');
+Route::post('/admin/sales/create/{id}', [AdminController::class, 'createSale'])->name('admin.create.sale');
 // ----------------------------------------------------------------------
