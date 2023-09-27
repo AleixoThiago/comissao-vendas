@@ -1,7 +1,4 @@
 <p align="center">
- <img width="128" src="https://i.imgur.com/O31DxI7.png"/>
-</p>
-<p align="center">
   <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
   <img src="https://img.shields.io/badge/PHP-4f5b93?style=for-the-badge&logo=php&logoColor=white"/>
 </p>
@@ -79,6 +76,7 @@ Se as URLs são "http://127.0.0.1:8000" e "http://127.0.0.1:8001", atribua o val
 
 -   [PHP 8.1](https://www.php.net/)
 -   [Laravel 10.x](https://laravel.com/docs/10.x)
+-   [TailwindCSS](https://v2.tailwindcss.com)
 
 ## Autor
 
@@ -88,4 +86,4 @@ Se as URLs são "http://127.0.0.1:8000" e "http://127.0.0.1:8001", atribua o val
 
 The [MIT License]() (MIT)
 
-Copyright :copyright: 2023 - app-ce4b9bea
+Copyright :copyright: 2023 - app-t49r28a63y
