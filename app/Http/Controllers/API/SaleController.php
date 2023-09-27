@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SaleStoreRequest;
 use App\Services\Contracts\SaleServiceInterface;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class SaleController extends Controller
@@ -22,28 +21,39 @@ class SaleController extends Controller
     }
 
     /**
-     * Método responsável por retornar todos os sellers
+     * Método responsável por retornar todas as vendas
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(Request $request)
+    public function index()
     {
-        $limit = $request->get('limit', 10);
-        $sellers = $this->saleService->getAllSales($limit);
+        $sales = $this->saleService->getAllSales();
 
-        return response()->json($sellers);
+        return response()->json($sales);
     }
 
     /**
-     * Método responsável por cadastrar sellers
+     * Método responsável por cadastrar vendas
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(SaleStoreRequest $request)
     {
-        $data = $request->validated(); // Valida e obtém os dados do request
+        $data = $request->validated();
         $seller = $this->saleService->createSale($data);
 
-        return response()->json($seller, Response::HTTP_CREATED); // Retorna o vendedor criado com código de status 201 (Created)
+        return response()->json($seller, Response::HTTP_CREATED);
+    }
+
+    /**
+     * Método responsável por buscar as vendas de um seller
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getSellerSales(int $sellerId)
+    {
+        $sales = $this->saleService->getSellerSales($sellerId);
+
+        return response()->json($sales);
     }
 }

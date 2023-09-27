@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class SellerController extends Controller
 {
     /**
-     * Método contrutor da classe
+     * Método construtor da classe
      *
      * @param  SellerService  $sellerService Instância de SellerService
      * @return void
