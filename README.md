@@ -73,7 +73,7 @@ php artisan serve
 ```
 
 Na variável de ambiente APP_API_URL, atribua a URL de um dos projetos servidos e o outro será usado no navegador para consultar a API do outro.
-Se as URLs são "http://127.0.0.1:8000" e "http://127.0.0.1:8001", atribua o valor "http://127.0.0.1:8001/api" à variável APP_API_URL e utilize a "http://127.0.0.1:8000" em seu navegador para seguir com a utilização."
+Se as URLs são "http://127.0.0.1:8000" e "http://127.0.0.1:8001", atribua o valor "http://127.0.0.1:8001/api" à variável APP_API_URL e utilize a "http://127.0.0.1:8000" em seu navegador para seguir com a utilização.
 
 ## Tecnologias utilizadas
 
