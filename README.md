@@ -10,7 +10,7 @@
 
 :small_blue_diamond: [Requisitos](#requisitos)
 
-:small_blue_diamond: [Execução do projeto](#execucao-do-projeto)
+:small_blue_diamond: [Execução do projeto](#execução-do-projeto)
 
 :small_blue_diamond: [Tecnologias utilizadas](#tecnologias-utilizadas)
 
@@ -66,7 +66,7 @@ Execute as migrations:
 php artisan migrate
 ```
 
-Execute o projeto no modo desenvolvimento duas vezes, isto é, abra a pasta do projeto em dois terminais distintos e sirva a aplicação em ambos, forçando que ela esteja responda em duas portas diferentes (geralmente 8000 e 8001):
+Execute o projeto no modo desenvolvimento duas vezes, isto é, abra a pasta do projeto em dois terminais distintos e sirva a aplicação em ambos, forçando que ela esteja respondendo em duas portas diferentes (geralmente 8000 e 8001):
 
 ```
 php artisan serve
