@@ -1,66 +1,96 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+ <img width="128" src="https://i.imgur.com/O31DxI7.png"/>
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PHP-4f5b93?style=for-the-badge&logo=php&logoColor=white"/>
 </p>
 
-## About Laravel
+## Sumário
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+:small_blue_diamond: [Requisitos](#requisitos)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+:small_blue_diamond: [Execução do projeto](#execute-projeto)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+:small_blue_diamond: [Tecnologias utilizadas](#tecnologias-utilizadas)
 
-## Learning Laravel
+:small_blue_diamond: [Autor](#autor)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+:small_blue_diamond: [Licença](#licença)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Requisitos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+:warning: [PHP:^8.1](https://www.php.net/releases/8.1/en.php)
 
-## Laravel Sponsors
+:warning: [Composer](https://getcomposer.org/download/)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+:warning: [MySQL](https://hub.docker.com/_/mysql)
 
-### Premium Partners
+## Execução do projeto
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+No terminal, clone o projeto:
 
-## Contributing
+```
+git clone https://github.com/AleixoThiago/comissao-vendas
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Entre na pasta
 
-## Code of Conduct
+```
+cd comissao-vendas
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Instale as dependências do composer:
 
-## Security Vulnerabilities
+```
+composer install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Copie .env.example e preencha o .env:
 
-## License
+```
+cp .env.example .env
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Abaixo da variável APP_URL, crie a variável APP_API_URL
+
+```
+
+Gerar a chave do projeto:
+
+```
+php artisan key:generate
+```
+
+Execute as migrations:
+
+```
+php artisan migrate
+```
+
+Execute o projeto no modo desenvolvimento duas vezes, isto é, abra a pasta do projeto em dois terminais distintos e sirva a aplicação em ambos, forçando que ela esteja responda em duas portas diferentes (geralmente 8000 e 8001):
+
+```
+php artisan serve
+```
+
+Na variável de ambiente APP_API_URL, atribua a URL de um dos projetos servidos e o outro será usado no navegador para consultar a API do outro:
+
+```
+Se as URLs são "http://127.0.0.1:8000" e "http://127.0.0.1:8001", atribua o valor "http://127.0.0.1:8001/api" à variável APP_API_URL
+```
+
+## Tecnologias utilizadas
+
+-   [PHP 8.1](https://www.php.net/)
+-   [Laravel 10.x](https://laravel.com/docs/10.x)
+
+## Autor
+
+[<img src="https://avatars.githubusercontent.com/u/68597119?v=4" width=115><br><sub>Thiago Aleixo</sub>](https://github.com/AleixoThiago)
+
+## Licença
+
+The [MIT License]() (MIT)
+
+Copyright :copyright: 2023 - app-ce4b9bea
