@@ -20,9 +20,17 @@ class SaleService implements SaleServiceInterface
     /**
      * Método responsável por retornar todos os sellers do BD
      */
-    public function getAllSales(int $limit = 10)
+    public function getAllSales()
     {
-        return $this->saleModel->paginate($limit);
+        return $this->saleModel->with('seller')->get();
+    }
+
+    /**
+     * Método responsável por retornar todos as vendas de um seller
+     */
+    public function getSellerSales($sellerId)
+    {
+        return $this->saleModel->with('seller')->where('seller_id', '=', $sellerId)->get();
     }
 
     /**
