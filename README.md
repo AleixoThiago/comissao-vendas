@@ -23,6 +23,8 @@
 
 :warning: [MySQL](https://hub.docker.com/_/mysql)
 
+:warning: [NPM](https://www.npmjs.com/package/download)
+
 ## Execução do projeto
 
 No terminal, clone o projeto:
@@ -41,6 +43,18 @@ Instale as dependências do composer:
 
 ```
 composer install
+```
+
+Instale os pacotes do npm:
+
+```
+npm i
+```
+
+Faça o build do npm:
+
+```
+npm run build
 ```
 
 Copie .env.example e preencha o .env:
