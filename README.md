@@ -10,7 +10,7 @@
 
 :small_blue_diamond: [Requisitos](#requisitos)
 
-:small_blue_diamond: [Execução do projeto](#execute-projeto)
+:small_blue_diamond: [Execução do projeto](#execucao-do-projeto)
 
 :small_blue_diamond: [Tecnologias utilizadas](#tecnologias-utilizadas)
 
@@ -53,8 +53,6 @@ cp .env.example .env
 ```
 
 Abaixo da variável APP_URL, crie a variável APP_API_URL
-
-```
 
 Gerar a chave do projeto:
 
