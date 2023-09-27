@@ -7,6 +7,9 @@ use App\Services\Contracts\AdminSalesMailInterface;
 
 class AdminSalesMailService implements AdminSalesMailInterface
 {
+    /**
+     * Método responsável por retornar os dados de vendas
+     */
     public function getSalesData()
     {
         $salesData = [];
@@ -19,11 +22,17 @@ class AdminSalesMailService implements AdminSalesMailInterface
         return $salesData;
     }
 
+    /**
+     * Método responsável por calcular o total de vendas
+     */
     public function calculateTotalSales($sales)
     {
         return $sales->count();
     }
 
+    /**
+     * Método responsável por calcular o valor total das vendas
+     */
     public function calculateTotalAmount($sales)
     {
         return $sales->sum('amount');
