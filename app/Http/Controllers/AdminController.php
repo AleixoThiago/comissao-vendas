@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Web\AuthTestService;
 use App\Services\Web\AdminPanelService;
+use App\Services\Web\AuthTestService;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,8 +11,8 @@ class AdminController extends Controller
     /**
      * Método contrutor da classe
      *
-     * @param  AuthTestService   $authTestService   Instância de AuthTestService
-     * @param  AdminPanelService $adminPanelService Instância de AdminPanelService
+     * @param  AuthTestService  $authTestService   Instância de AuthTestService
+     * @param  AdminPanelService  $adminPanelService Instância de AdminPanelService
      * @return void
      */
     public function __construct(
@@ -27,7 +27,7 @@ class AdminController extends Controller
     public function index()
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
@@ -40,56 +40,56 @@ class AdminController extends Controller
     public function showSellers()
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
         $sellersData = $this->adminPanelService->getAllSellers();
+
         return view('pages.admin.sellers.index', [
-            'sellersData' => $sellersData
+            'sellersData' => $sellersData,
         ]);
     }
 
     /**
      * Método responsável por renderizar a página com todas as vendas de um ou mais sellers
-     *
-     * @param Request $request
      */
     public function showSales(Request $request)
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
         $sellerId = $request->get('sellerId') ?? 0;
 
         $salesData = ($sellerId > 0) ? $this->adminPanelService->getSellerSales($sellerId) : $this->adminPanelService->getAllSales();
+
         return view('pages.admin.sales.index', [
-            'salesData' => $salesData
+            'salesData' => $salesData,
         ]);
     }
 
     /**
      * Método responsável por renderizar a página de detalhe de um seller
      *
-     * @param int $id Identificador do seller
+     * @param  int  $id Identificador do seller
      */
     public function showSeller(int $id)
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
         $sellerData = $this->adminPanelService->getSeller($id ?? 0);
 
-        if(empty($sellerData)) {
+        if (empty($sellerData)) {
             return back()->withErrors(['error' => 'Vendedor não encontrado']);
         }
 
         return view('pages.admin.sellers.detail', [
-            'sellerData' => $sellerData
+            'sellerData' => $sellerData,
         ]);
     }
 
@@ -99,7 +99,7 @@ class AdminController extends Controller
     public function showCreateSellerForm()
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
@@ -109,40 +109,38 @@ class AdminController extends Controller
     /**
      * Método responsável por renderizar a página de cadastro de uma venda a um seller
      *
-     * @param int $id Identificador do seller
+     * @param  int  $id Identificador do seller
      */
     public function showCreateSaleForm($id)
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
         $sellerData = $this->adminPanelService->getSeller($id ?? 0);
 
-        if(empty($sellerData)) {
+        if (empty($sellerData)) {
             return back()->withErrors(['error' => 'Vendedor não encontrado']);
         }
 
         return view('pages.admin.sales.create', [
             'id' => $id,
-            'sellerData' => $sellerData
+            'sellerData' => $sellerData,
         ]);
     }
 
     /**
      * Método responsável por realizar o cadastro de um novo seller
-     *
-     * @param Request $request
      */
     public function createSeller(Request $request)
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
-        if(!$this->adminPanelService->createSeller($request)) {
+        if (! $this->adminPanelService->createSeller($request)) {
             return back()->withErrors(['error' => 'Erro ao cadastrar vendedor!']);
         }
 
@@ -152,17 +150,16 @@ class AdminController extends Controller
     /**
      * Método responsável por realizar o cadastro de uma nova venda
      *
-     * @param Request $request
-     * @param int     $id      Identificador do seller
+     * @param  int  $id      Identificador do seller
      */
     public function createSale(Request $request, $id)
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
-        if(!$this->adminPanelService->createSale($request, $id)) {
+        if (! $this->adminPanelService->createSale($request, $id)) {
             return back()->withErrors(['error' => 'Erro ao cadastrar venda!']);
         }
 
@@ -172,16 +169,16 @@ class AdminController extends Controller
     /**
      * Método responsável por realizar a exclusão de um vendedor
      *
-     * @param int $id Identificador do seller
+     * @param  int  $id Identificador do seller
      */
     public function deleteSeller($id)
     {
         //TESTA A AUTENTICAÇÃO
-        if(!$this->authTestService->testAuth()) {
+        if (! $this->authTestService->testAuth()) {
             return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
         }
 
-        if(!$this->adminPanelService->deleteSeller($id)) {
+        if (! $this->adminPanelService->deleteSeller($id)) {
             return back()->withErrors(['error' => 'Erro ao excluir o vendedor!']);
         }
 
@@ -190,9 +187,10 @@ class AdminController extends Controller
 
     public function sendSellerSalesReportMail($id)
     {
-        if(!$this->adminPanelService->sendSellerSalesReportMail($id)) {
+        if (! $this->adminPanelService->sendSellerSalesReportMail($id)) {
             return back()->withErrors(['error' => 'Erro ao enviar e-mail!']);
         }
+
         return back()->with(['success' => 'E-mail enviado ao vendedor com sucesso!']);
     }
 }

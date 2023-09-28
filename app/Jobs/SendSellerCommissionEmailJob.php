@@ -29,12 +29,13 @@ class SendSellerCommissionEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        if($this->sellerId <= 0) {
+        if ($this->sellerId <= 0) {
             $sellersData = (new SellerCommissionMailService)->getAllSellersSalesData();
             foreach ($sellersData as $sellerData) {
                 $mail = new SellerCommissionMail($sellerData);
                 Mail::to($sellerData['email'])->send($mail);
             }
+
             return;
         }
 

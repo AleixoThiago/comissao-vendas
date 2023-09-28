@@ -49,7 +49,7 @@ class SellerService implements SellerServiceInterface
     /**
      * Método responsável por retornar todos os sellers do BD
      *
-     * @param int $sellerId Identificador do seller
+     * @param  int  $sellerId Identificador do seller
      */
     public function getSellerById(int $sellerId)
     {
@@ -60,8 +60,8 @@ class SellerService implements SellerServiceInterface
 
         $seller->sales->transform(function ($sale) {
             return [
-                'id'        => $sale->id,
-                'amount'    => $sale->amount,
+                'id' => $sale->id,
+                'amount' => $sale->amount,
                 'sale_date' => $sale->created_at,
             ];
         });
@@ -74,19 +74,19 @@ class SellerService implements SellerServiceInterface
     /**
      * Método responsável por setar dados de vendas e comissão à instância de seller
      *
-     * @param SellerModel $seller Instância de Seller
+     * @param  SellerModel  $seller Instância de Seller
      */
     private function setSalesCommissionInfo(SellerModel &$seller)
     {
-        $seller->totalSales      = $seller->sales->count();
-        $seller->totalAmount     = $seller->sales->sum('amount');
+        $seller->totalSales = $seller->sales->count();
+        $seller->totalAmount = $seller->sales->sum('amount');
         $seller->totalCommission = (float) number_format(($seller->totalAmount * ($seller->commission_percentage / 100)), 2, '.', '');
     }
 
     /**
      * Método responsável por enviar o email com o relatório de vendas do dia de um vendedor
      *
-     * @param int $sellerId Identificador do seller
+     * @param  int  $sellerId Identificador do seller
      */
     public function dispatchSalesReportMail(int $sellerId)
     {

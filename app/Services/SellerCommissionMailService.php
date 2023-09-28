@@ -13,9 +13,9 @@ class SellerCommissionMailService implements SellerCommissionMailInterface
             'sales' => fn ($query) => $query->whereDate('created_at', today()),
         ])->findOrFail($sellerId);
 
-        $seller->totalSales  = $this->calculateTotalSales($seller);
+        $seller->totalSales = $this->calculateTotalSales($seller);
         $seller->totalAmount = $this->calculateTotalAmount($seller);
-        $seller->commission  = $this->calculateCommission($seller->totalAmount, $seller->commission_percentage);
+        $seller->commission = $this->calculateCommission($seller->totalAmount, $seller->commission_percentage);
 
         return $seller->toArray();
     }
@@ -27,9 +27,9 @@ class SellerCommissionMailService implements SellerCommissionMailInterface
         ])->get();
 
         foreach ($sellers as $key => $seller) {
-            $seller->totalSales  = $this->calculateTotalSales($seller);
+            $seller->totalSales = $this->calculateTotalSales($seller);
             $seller->totalAmount = $this->calculateTotalAmount($seller);
-            $seller->commission  = $this->calculateCommission($seller->totalAmount, $seller->commission_percentage);
+            $seller->commission = $this->calculateCommission($seller->totalAmount, $seller->commission_percentage);
 
             $sellers[$key] = $seller->toArray();
         }

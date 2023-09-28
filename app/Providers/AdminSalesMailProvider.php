@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Services\Contracts\AdminSalesMailInterface;
 use App\Services\AdminSalesMailService;
+use App\Services\Contracts\AdminSalesMailInterface;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 

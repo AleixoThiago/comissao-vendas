@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminLoginController;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Route;
 
 /*

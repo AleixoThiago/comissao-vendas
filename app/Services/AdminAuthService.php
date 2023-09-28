@@ -9,11 +9,11 @@ class AdminAuthService
     /**
      * Método responsável por realizar o login
      *
-     * @param array $credentials Credenciais verificadas para login
+     * @param  array  $credentials Credenciais verificadas para login
      */
     public function login(array $credentials): string
     {
-        if (!Auth::guard('admin')->attempt($credentials)) {
+        if (! Auth::guard('admin')->attempt($credentials)) {
             return null;
         }
 

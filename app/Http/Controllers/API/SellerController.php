@@ -49,12 +49,12 @@ class SellerController extends Controller
     /**
      * Método responsável por excluir sellers
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        if(!$this->sellerService->deleteSeller($id)) {
+        if (! $this->sellerService->deleteSeller($id)) {
             return response()->json(null, Response::HTTP_NOT_ACCEPTABLE);
         }
 
@@ -65,6 +65,7 @@ class SellerController extends Controller
      * Método responsável por retornar as informações de um seller
      *
      * @return \Illuminate\Http\JsonResponse
+     *
      * @throws ModelNotFoundException
      */
     public function getSeller(int $id)
@@ -84,6 +85,7 @@ class SellerController extends Controller
     public function sendSalesReportMail(int $id)
     {
         $this->sellerService->dispatchSalesReportMail($id);
+
         return response()->json(null, Response::HTTP_OK);
     }
 }

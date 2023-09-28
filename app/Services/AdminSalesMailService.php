@@ -15,9 +15,9 @@ class AdminSalesMailService implements AdminSalesMailInterface
     {
         $salesData = [];
         $sales = Sale::whereDate('created_at', today())
-                    ->get();
+            ->get();
 
-        $salesData['totalSales']  = $this->calculateTotalSales($sales);
+        $salesData['totalSales'] = $this->calculateTotalSales($sales);
         $salesData['totalAmount'] = $this->calculateTotalAmount($sales);
 
         return $salesData;
@@ -29,6 +29,7 @@ class AdminSalesMailService implements AdminSalesMailInterface
     public function getAdmins()
     {
         $admins = Admin::all('email');
+
         return $admins;
     }
 

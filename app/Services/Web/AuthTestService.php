@@ -28,6 +28,6 @@ class AuthTestService
     private function getResponseAuth()
     {
         return Http::acceptJson()->withToken(Session::get('admin_token'))
-                                 ->get(env('APP_API_URL') . '/auth');
+            ->get(env('APP_API_URL').'/auth');
     }
 }

@@ -19,7 +19,7 @@ class AdminAPITest extends TestCase
         $apiToken = $admin->createToken('admin_token')->plainTextToken;
 
         $response = $this->withHeaders([
-            'Authorization' => "Bearer {$apiToken}"
+            'Authorization' => "Bearer {$apiToken}",
         ])->get(route('api.admin.auth'));
 
         $response->assertStatus(Response::HTTP_OK);

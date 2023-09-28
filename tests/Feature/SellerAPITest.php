@@ -25,14 +25,14 @@ class SellerAPITest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => "Bearer {$apiToken}",
-            'Accept'        => 'application/json'
+            'Accept' => 'application/json',
         ])->post(route('api.create.seller'), $newSeller);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
                 'id',
                 'name',
-                'email'
+                'email',
             ]);
     }
 
@@ -51,7 +51,7 @@ class SellerAPITest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => "Bearer {$apiToken}",
-            'Accept'        => 'application/json'
+            'Accept' => 'application/json',
         ])->post(route('api.create.seller'), $newSeller);
 
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);

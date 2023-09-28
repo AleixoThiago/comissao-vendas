@@ -26,7 +26,7 @@ class AdminFactory extends Factory
             'email' => Str::slug($name, '.').'@'.fake()->freeEmailDomain(),
             'email_verified_at' => now(),
             'password' => bcrypt($password),
-            'remember_token' => $password
+            'remember_token' => $password,
         ];
     }
 

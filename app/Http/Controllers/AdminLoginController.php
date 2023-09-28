@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Services\Web\AuthTestService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Http\Request;
 
 class AdminLoginController extends Controller
 {
     /**
      * Método contrutor da classe
      *
-     * @param  AuthTestService   $authTestService   Instância de AuthTestService
+     * @param  AuthTestService  $authTestService   Instância de AuthTestService
      * @return void
      */
     public function __construct(
@@ -25,9 +25,10 @@ class AdminLoginController extends Controller
      */
     public function showLoginForm()
     {
-        if($this->authTestService->testAuth()) {
+        if ($this->authTestService->testAuth()) {
             return redirect('/admin/home');
         }
+
         return view('pages.login');
     }
 
@@ -36,7 +37,7 @@ class AdminLoginController extends Controller
      */
     public function login(Request $request)
     {
-        $response = Http::acceptJson()->post(env('APP_API_URL') . '/admin/login', [
+        $response = Http::acceptJson()->post(env('APP_API_URL').'/admin/login', [
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ]);
