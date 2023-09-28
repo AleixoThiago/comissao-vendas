@@ -1,5 +1,8 @@
 @extends('layouts.default')
 
+@push('head')
+    <script src="{{ asset('js/admin/sellers/delete-seller.js')}}"></script>
+@endpush
 @section('body')
     <div class="min-h-screen flex items-center justify-center bg-gray-100">
         <div class="bg-white p-8 rounded-lg shadow-md w-4/5">
@@ -46,8 +49,8 @@
                                         visibility
                                     </span>
                                 </a>
-                                <a href="{{ route('admin.sales', 'sellerId='.$sellerData['id']) }}" class="text-purple-700 mr-2"
-                                    title="Lista de vendas do vendedor">
+                                <a href="{{ route('admin.sales', 'sellerId=' . $sellerData['id']) }}"
+                                    class="text-purple-700 mr-2" title="Lista de vendas do vendedor">
                                     <span class="material-symbols-outlined">
                                         attach_money
                                     </span>
@@ -64,6 +67,12 @@
                                         send
                                     </span>
                                 </a>
+                                <button class="text-red-500 hover:text-red-700" data-id="{{ $sellerData['id'] }}"
+                                    onclick="confirmDelete({{ $sellerData['id'] }}, '{{ $sellerData['name'] }}')">
+                                    <span class="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </button>
                             </td>
                         </tr>
                     @endforeach
