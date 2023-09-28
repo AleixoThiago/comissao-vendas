@@ -93,6 +93,23 @@ class AdminPanelService
     }
 
     /**
+     * Método responsável por excluir um seller
+     *
+     * @param int $id
+     */
+    public function deleteSeller($id)
+    {
+        $response = Http::acceptJson()->withToken(Session::get('admin_token'))
+            ->delete(env('APP_API_URL') . "/sellers/{$id}");
+
+        if ($response->status() != Response::HTTP_ACCEPTED) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Método responsável por registrar uma venda de um seller
      *
      * @param Request $request

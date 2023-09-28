@@ -43,7 +43,22 @@ class SellerController extends Controller
         $data = $request->validated(); // Valida e obtém os dados do request
         $seller = $this->sellerService->createSeller($data);
 
-        return response()->json($seller, Response::HTTP_CREATED); // Retorna o vendedor criado com código de status 201 (Created)
+        return response()->json($seller, Response::HTTP_CREATED);
+    }
+
+    /**
+     * Método responsável por excluir sellers
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($id)
+    {
+        if(!$this->sellerService->deleteSeller($id)) {
+            return response()->json(null, Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+        return response()->json(null, Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -59,7 +74,7 @@ class SellerController extends Controller
 
             return response()->json($seller);
         } catch (ModelNotFoundException $e) {
-            return response()->json(['message' => 'Vendedor não encontrado!', 'data' => []], 404);
+            return response()->json(['message' => 'Vendedor não encontrado!', 'data' => []], Response::HTTP_NOT_FOUND);
         }
     }
 

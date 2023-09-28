@@ -169,6 +169,25 @@ class AdminController extends Controller
         return redirect("/admin/sales/create/{$id}")->with('success', 'Nova venda cadastrada com sucesso!');
     }
 
+    /**
+     * Método responsável por realizar a exclusão de um vendedor
+     *
+     * @param int $id Identificador do seller
+     */
+    public function deleteSeller($id)
+    {
+        //TESTA A AUTENTICAÇÃO
+        if(!$this->authTestService->testAuth()) {
+            return redirect('/login')->withErrors(['auth' => 'Não autenticado!']);
+        }
+
+        if(!$this->adminPanelService->deleteSeller($id)) {
+            return back()->withErrors(['error' => 'Erro ao excluir o vendedor!']);
+        }
+
+        return back()->with('success', 'Vendedor excluído com sucesso!');
+    }
+
     public function sendSellerSalesReportMail($id)
     {
         if(!$this->adminPanelService->sendSellerSalesReportMail($id)) {

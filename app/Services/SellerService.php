@@ -37,6 +37,16 @@ class SellerService implements SellerServiceInterface
     }
 
     /**
+     * Método responsável por excluir um seller
+     *
+     * @param  int  $id Identificador do seller
+     */
+    public function deleteSeller(int $id)
+    {
+        return $this->sellerModel->destroy($id);
+    }
+
+    /**
      * Método responsável por retornar todos os sellers do BD
      *
      * @param int $sellerId Identificador do seller
