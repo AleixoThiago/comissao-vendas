@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('seller_id')->constrained();
+            $table->foreignId('seller_id')->constrained()->onDelete('cascade');
             $table->float('amount');
             $table->timestamp('created_at')->useCurrent();
         });
