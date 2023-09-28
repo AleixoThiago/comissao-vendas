@@ -23,14 +23,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
     /**
      * Rota de confirmação de autenticação
      */
-    Route::get('/auth', fn () => response()->json(null, Response::HTTP_OK));
+    Route::get('/auth', fn () => response()->json(null, Response::HTTP_OK))->name('api.admin.auth');
 
     /**
      * Rotas de sellers
      */
     Route::get('/sellers', [SellerController::class, 'index']);
     Route::get('/sellers/{id}', [SellerController::class, 'getSeller']);
-    Route::post('/sellers', [SellerController::class, 'store']);
+    Route::delete('/sellers/{id}', [SellerController::class, 'destroy']);
+    Route::post('/sellers', [SellerController::class, 'store'])->name('api.create.seller');
     Route::get('/mail/sellers/{id}', [SellerController::class, 'sendSalesReportMail']);
 
     /**

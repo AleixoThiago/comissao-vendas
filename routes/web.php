@@ -36,6 +36,7 @@ Route::get('/admin/sellers', [AdminController::class, 'showSellers'])->name('adm
 Route::get('/admin/sellers/{id}', [AdminController::class, 'showSeller'])->name('admin.seller.detail');
 Route::get('/admin/create/seller', [AdminController::class, 'showCreateSellerForm'])->name('admin.create.seller');
 Route::post('/admin/create/seller', [AdminController::class, 'createSeller'])->name('admin.create.seller');
+Route::get('/admin/delete/seller/{id}', [AdminController::class, 'deleteSeller'])->name('admin.delete.seller');
 Route::get('/admin/mail/sellers/{id}', [AdminController::class, 'sendSellerSalesReportMail'])->name('admin.mail.seller');
 
 /**
