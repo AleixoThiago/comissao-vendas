@@ -65,15 +65,6 @@ Execute as migrations:
 php artisan migrate
 ```
 
-Execute o projeto no modo desenvolvimento duas vezes, isto é, abra a pasta do projeto em dois terminais distintos e sirva a aplicação em ambos, forçando que ela esteja respondendo em duas portas diferentes (geralmente 8000 e 8001):
-
-```
-php artisan serve
-```
-
-Na variável de ambiente APP_API_URL, atribua a URL de um dos projetos servidos e o outro será usado no navegador para consultar a API do outro.
-Se as URLs são "http://127.0.0.1:8000" e "http://127.0.0.1:8001", atribua o valor "http://127.0.0.1:8001/api" à variável APP_API_URL e utilize a "http://127.0.0.1:8000" em seu navegador para seguir com a utilização.
-
 Instale os pacotes do npm:
 
 ```
@@ -84,6 +75,25 @@ Faça o build do npm:
 
 ```
 npm run build
+```
+
+Execute o projeto no modo desenvolvimento duas vezes, isto é, abra a pasta do projeto em dois terminais distintos e sirva a aplicação em ambos, forçando que ela esteja respondendo em duas portas diferentes (geralmente 8000 e 8001):
+
+```
+php artisan serve
+```
+
+Na variável de ambiente APP_API_URL, atribua a URL de um dos projetos servidos. Exemplo:
+
+```
+APP_API_URL=http://127.0.0.1:8001/api
+```
+
+
+Utilize a outra URL em seu navegador para seguir com a utilização. Exemplo:
+
+```
+http://127.0.0.1:8000
 ```
 
 ## Tecnologias utilizadas
